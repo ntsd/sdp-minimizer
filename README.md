@@ -13,10 +13,16 @@ over IRC would work.
 See [webrtchacks](https://webrtchacks.com/the-minimum-viable-sdp/) for an in-depth explanation of what
 happens here.
 
+# Installation
+
+```sh
+npm install sdp-minimizer-ts
+```
+
 # Reduce Example
 
-``` js
-var min = require('sdp-minimizer');
+``` ts
+import * as min from 'sdp-minimizer-ts';
 console.log(min.reduce({
   type: 'offer',
   sdp: 'v=0\r\no=- 5498186869896684180 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na'
@@ -38,8 +44,8 @@ O,tCjVOmVGpVZjCem/,dOU77RWjJ8qQNb5OTz6D+U7h,wq7Dm8K+fsKbF0XCp8KlVEDCqGYZEVzDsjTD
 
 # Expand Example
 
-``` js
-var min = require('sdp-minimizer');
+``` ts
+import * as min from 'sdp-minimizer-ts';
 console.log(min.expand(
   'O,tCjVOmVGpVZjCem/,dOU77RWjJ8qQNb5OTz6D+U7h,wq7Dm8K+fsKbF0XCp8KlVEDCqGYZEVz'
     + 'DsjTDiArCucKFMnAJLsKpwpHCosKCw6hx'
@@ -55,10 +61,10 @@ output:
 
 # Usage
 
-See [the full sample](https://github.com/fippo/minimal-webrtc).
+See [the full sample](https://github.com/ntsd/minimal-webrtc).
 
-``` js
-var min = require('sdp-minimizer')
+```ts
+import * as min from 'sdp-minimizer-ts';
 ```
 
 ## var compact = min.reduce(sdp)

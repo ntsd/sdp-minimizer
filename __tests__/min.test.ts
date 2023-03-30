@@ -49,12 +49,12 @@ describe("minimize", () => {
 		expect(min.expandSDP(compactSDP, true)).toEqual(expandedSDP);
 	});
 
-	test("reduceSDP2", () => {
+	test("reduceSDP new", () => {
 		expect(min.reduceSDP(originSDP2)).toEqual(compactSDP2);
 	});
 
-	test("expandSDP2", () => {
-		console.log('test:', JSON.stringify(min.expandSDP(compactSDP2, false)))
+	test("expandSDP new", () => {
 		expect(min.expandSDP(compactSDP2, false)).toEqual(expandedSDP2);
+		expect(min.reduceSDP(expandedSDP2)).toEqual(compactSDP2);
 	});
 });

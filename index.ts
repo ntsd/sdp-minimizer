@@ -1,4 +1,4 @@
-import { btoa, atob } from './base64';
+import { base64decode, base64encode } from './base64';
 
 export function reduceSDP(sdp: string): string {
 	let lines: string[] = sdp.split('\r\n');
@@ -21,7 +21,7 @@ export function reduceSDP(sdp: string): string {
 				const hex = line.substr(22).split(':').map((h) => {
 					return parseInt(h, 16);
 				});
-				return btoa(String.fromCharCode.apply(String, hex));
+				return base64encode(String.fromCharCode.apply(String, hex));
 			case 'a=ice-pwd':
 				return line.substr(10);
 			case 'a=ice-ufrag':
@@ -83,7 +83,7 @@ export function expandSDP(sdpMinStr: string, isOffer = true): string {
 	sdp.push('a=ice-pwd:' + comp[1]);
 	sdp.push(
 		'a=fingerprint:sha-256 ' +
-		atob(comp[2])
+		base64decode(comp[2])
 			.split('')
 			.map((c: string) => {
 				let d = c.charCodeAt(0);
